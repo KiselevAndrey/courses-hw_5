@@ -37,30 +37,32 @@ namespace quick_sort
             return arr;
         }
 
-        static int Partition1(int[] arr, int start_index, int end_index)
+        static int Partition(int[] arr, int start_index, int end_index)
         {
-            int pivot = arr[(start_index+end_index)/2];
-            int left_index = start_index;
-            int right_index = end_index;
-
-            while (left_index <= right_index)
+            int pivot = arr[start_index];
+            int left_index = start_index - 1;
+            int right_index = end_index + 1;
+            while (true)
             {
-                while (arr[left_index] < pivot) 
-                {
-                    left_index++;
-                }
-                while (arr[right_index] > pivot) 
+                do
                 {
                     right_index--;
                 }
-                if (left_index <= right_index)
+                while (arr[right_index] > pivot);
+                do
+                {
+                    left_index++;
+                }
+                while (arr[left_index] < pivot);
+                if (left_index < right_index)
                 {
                     Swap(ref arr[left_index], ref arr[right_index]);
                 }
-                left_index++;
-                right_index--;
+                else
+                {
+                    return right_index;
+                }
             }
-            return left_index;            
         }
 
         static void Swap(ref int x, ref int y)
@@ -102,34 +104,6 @@ namespace quick_sort
                     continue;
                 }
                 return num;
-            }
-        }
-
-        static int Partition(int[] arr, int start_index, int end_index)
-        {
-            int pivot = arr[start_index];
-            int left_index = start_index - 1;
-            int right_index = end_index + 1;
-            while (true)
-            {
-                do
-                {
-                    right_index--;
-                }
-                while (arr[right_index] > pivot);
-                do
-                {
-                    left_index++;
-                }
-                while (arr[left_index] < pivot);
-                if (left_index < right_index)
-                {
-                    Swap(ref arr[left_index], ref arr[right_index]);
-                }
-                else
-                {
-                    return right_index;
-                }
             }
         }
     }
