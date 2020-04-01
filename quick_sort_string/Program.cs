@@ -13,7 +13,7 @@ namespace quick_sort_string
 
             leters = QuickSort(leters);
 
-            Console.WriteLine("Отсортированная строка с сохранением знаков препинания");
+            Console.WriteLine("\nОтсортированная строка с сохранением знаков препинания:");
             bool flag = char.IsLetter(text[0]);
             int count = leters.Count > symbols.Count ? leters.Count : symbols.Count;
             for (int i = 0; i < count; i++)
